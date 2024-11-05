@@ -82,16 +82,16 @@ export function Header() {
         </div>
       </div>
 
-      {/* Updated Main Navigation */}
-      <div className="h-[84px] flex items-center border-b bg-background">
+      {/* Updated Main Navigation - Reduced height */}
+      <div className="h-[64px] lg:h-[84px] flex items-center border-b bg-background">
         <div className="container mx-auto px-4">
           <nav className="flex items-center">
             <div className="flex items-center gap-8 justify-between w-full">
               <div className="flex flex-col">
-                <Link href="/" className="text-lg font-bold tracking-tight">
+                <Link href="/" className="text-base lg:text-lg font-bold tracking-tight">
                   {process.env.NEXT_PUBLIC_COMPANY_NAME}
                 </Link>
-                <span className="text-xs md:text-sm text-gray-600">Hello, Bonjour, Hola, 你好, Ciao</span>
+                <span className="text-xs lg:text-sm text-gray-600">Hello, Bonjour, Hola, 你好, Ciao</span>
               </div>
 
               {/* Desktop Navigation */}

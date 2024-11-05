@@ -20,15 +20,15 @@ export function Hero() {
               src="https://static.wixstatic.com/media/5bc63f_e6b0aea0967648c09d65b431c26568bf~mv2.jpg/v1/fill/w_1483,h_1224,al_l,q_90,enc_auto/5bc63f_e6b0aea0967648c09d65b431c26568bf~mv2.jpg"
             />
             <div className="absolute inset-0 bg-chart-3/70" />
-            <div className="relative p-6 lg:p-12">
-              <h1 className="text-background text-4xl font-bold mb-2">Movers in London, Ontario</h1>
-              <h2 className="text-background text-3xl font-bold mb-4">True North Movers</h2>
-              <p className="text-background/90 mb-8">
+            <div className="relative p-4 lg:p-12">
+              <h1 className="text-background text-3xl lg:text-4xl font-bold mb-2">Movers in London, Ontario</h1>
+              <h2 className="text-background text-2xl lg:text-3xl font-bold mb-4">True North Movers</h2>
+              <p className="text-background/90 mb-6 lg:mb-8 text-sm lg:text-base">
                 True North Movers in London, Ontario is a team of passionate movers providing Moving and Relocating services with
                 professionals trained and certified to maintain, protect and enhance your moving experience. We simplify Home
                 Moving with the utmost goal of providing better valued services to everyone who books with us.
               </p>
-              <ul className="text-background/90 mb-8">
+              <ul className="text-background/90 mb-6 lg:mb-8 text-sm lg:text-base">
                 <li className="flex items-center space-x-2">
                   <span>✓</span>
                   <span className="font-medium">Long Distance Provincial Moving</span>
