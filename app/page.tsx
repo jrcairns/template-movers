@@ -79,7 +79,7 @@ export default function Home() {
       </section>
       <section className="bg-background border-t grid lg:grid-cols-2">
         {/* Left Column - Moving Process */}
-        <div className="p-12">
+        <div className="py-12 px-6">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold mb-12">Your Moving Process</h2>
             <Stepper steps={movingSteps} />

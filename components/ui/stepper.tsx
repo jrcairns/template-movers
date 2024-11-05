@@ -11,7 +11,7 @@ function Step({ number, title, description, isLast }: StepProps) {
     return (
         <div className="flex gap-6">
             <div className="relative">
-                <div className="bg-chart-3 text-background rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold shrink-0 relative z-10">
+                <div className="bg-chart-3 text-background rounded-full w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center text-2xl font-bold shrink-0 relative z-10">
                     {number}
                 </div>
                 {!isLast && (
