@@ -1,5 +1,3 @@
-'use client'
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,32 +12,32 @@ import { ExternalLink, Menu, PartyPopper, Phone } from "lucide-react"
 import Link from "next/link"
 import { ServiceIcon } from "./service-icon"
 import { buttonVariants } from "./ui/button"
-import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer"
+import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "./ui/drawer"
 
 const services = [
   {
     icon: "map",
     title: "Long Distance Moving",
     description: "Professional moving services across provinces with care and precision.",
-    href: "/services/long-distance"
+    href: "/services/long-distance-movers"
   },
   {
     icon: "statue",
     title: "USA Moving",
     description: "Seamless cross-border relocations between Canada and the United States.",
-    href: "/services/usa-moving"
+    href: "/services/moving-to-america"
   },
   {
     icon: "ship",
     title: "Moving Overseas",
     description: "International moving services with comprehensive logistics support.",
-    href: "/services/international"
+    href: "/services/international-movers"
   },
   {
     icon: "building",
     title: "Corporate Relocation",
     description: "Specialized moving solutions for businesses and employees.",
-    href: "/services/corporate"
+    href: "/services/corporate-relocation"
   },
   {
     icon: "warehouse",
@@ -51,14 +49,14 @@ const services = [
 
 export function Header() {
   return (
-    <header className="w-full relative z-50">
+    <header className="w-full z-50 fixed top-0 h-[--header-height] bg-background text-foreground">
       {/* Announcement Bar - 44px height */}
       <div className="w-full bg-chart-3">
         <div className="flex items-center justify-between container px-4 mx-auto text-background text-sm h-11">
           <p className="flex items-center justify-center gap-2 max-w-[70%] md:max-w-none">
             <PartyPopper className="h-4 w-4" />
             <span className="hidden lg:block">
-              {"We've officially hit 400+ Google Reviews with a 4.9 Rating"}
+              We&apos;ve officially hit {process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_COUNT}+ Google Reviews with a {process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_RATING} Rating
             </span>
             <a href={process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -75,7 +73,7 @@ export function Header() {
               </Link>
             </div>
             <div className="w-px h-4 bg-background/20 mx-4" />
-            <Link href="/get-a-quote" className={cn(buttonVariants({ variant: "secondary", size: "sm" }))}>
+            <Link href="#quote" className={cn(buttonVariants({ variant: "secondary", size: "sm" }))}>
               Get a quote
             </Link>
           </div>
@@ -83,16 +81,15 @@ export function Header() {
       </div>
 
       {/* Updated Main Navigation - Reduced height */}
-      <div className="h-[64px] lg:h-[84px] flex items-center border-b bg-background">
+      <div className="h-[64px] flex items-center border-b bg-background">
         <div className="container mx-auto px-4">
           <nav className="flex items-center">
             <div className="flex items-center gap-8 justify-between w-full">
-              <div className="flex flex-col">
-                <Link href="/" className="text-base lg:text-lg font-bold tracking-tight">
-                  {process.env.NEXT_PUBLIC_COMPANY_NAME}
-                </Link>
-                <span className="text-xs lg:text-sm text-gray-600">Hello, Bonjour, Hola, 你好, Ciao</span>
-              </div>
+
+              <Link href="/" className="flex flex-col">
+                <span className="text-base font-bold tracking-tight">{process.env.NEXT_PUBLIC_COMPANY_NAME}</span>
+                <span className="text-xs  text-muted-foreground">Hello, Bonjour, Hola, 你好, Ciao</span>
+              </Link>
 
               {/* Desktop Navigation */}
               <div className="hidden lg:block">
@@ -126,7 +123,7 @@ export function Header() {
                       </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                      <Link href="/locations" legacyBehavior passHref>
+                      <Link href="/about-us" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                           About Us
                         </NavigationMenuLink>
@@ -141,13 +138,6 @@ export function Header() {
                       >
                         Reviews
                       </a>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                      <Link href="/contact" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                          Contact
-                        </NavigationMenuLink>
-                      </Link>
                     </NavigationMenuItem>
                   </NavigationMenuList>
                 </NavigationMenu>
@@ -184,7 +174,7 @@ export function Header() {
                         {/* Other Navigation Links */}
                         <div className="space-y-2">
                           <Link
-                            href="/locations"
+                            href="/about-us"
                             className="block p-2 hover:bg-accent rounded-md"
                           >
                             About Us
@@ -198,23 +188,19 @@ export function Header() {
                             Reviews
                             <ExternalLink className="h-4 w-4" />
                           </a>
-                          <Link
-                            href="/contact"
-                            className="block p-2 hover:bg-accent rounded-md"
-                          >
-                            Contact
-                          </Link>
                         </div>
                       </div>
 
                       {/* Action Buttons */}
                       <div className="border-t mt-4 pt-4 space-y-3">
-                        <Link
-                          href="/get-a-quote"
-                          className={cn(buttonVariants({ size: "lg" }), "w-full")}
-                        >
-                          Get a Quote
-                        </Link>
+                        <DrawerClose asChild>
+                          <Link
+                            href="#quote"
+                            className={cn(buttonVariants({ size: "lg" }), "w-full")}
+                          >
+                            Get a Quote
+                          </Link>
+                        </DrawerClose>
                         <Link
                           href={`tel:${process.env.NEXT_PUBLIC_CONTACT_NUMBER}`}
                           className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full")}

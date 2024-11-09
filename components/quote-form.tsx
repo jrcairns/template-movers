@@ -81,35 +81,35 @@ export function QuoteForm() {
                         </RadioGroup>
                     </div>
 
+                    <div className="space-y-2">
+                        <Label htmlFor="startingAddress">Starting Address</Label>
+                        <AddressInput
+                            id="startingAddress"
+                            name="startingAddress"
+                            required
+                            placeholder="Enter starting address"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="movingAddress">Moving Address</Label>
+                        <AddressInput
+                            id="movingAddress"
+                            name="movingAddress"
+                            required
+                            placeholder="Enter destination address"
+                        />
+                    </div>
+
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="startingAddress">Starting Address</Label>
-                            <AddressInput
-                                id="startingAddress"
-                                name="startingAddress"
-                                required
-                                placeholder="Enter starting address"
-                            />
+                            <Label htmlFor="phone">Phone Number</Label>
+                            <Input id="phone" name="phone" type="tel" required />
                         </div>
+
                         <div className="space-y-2">
-                            <Label htmlFor="movingAddress">Moving Address</Label>
-                            <AddressInput
-                                id="movingAddress"
-                                name="movingAddress"
-                                required
-                                placeholder="Enter destination address"
-                            />
+                            <Label htmlFor="email">Email Address</Label>
+                            <Input id="email" name="email" type="email" required />
                         </div>
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input id="phone" name="phone" type="tel" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input id="email" name="email" type="email" required />
                     </div>
                 </CardContent>
 

@@ -94,3 +94,30 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.max-w-prose {
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-lg font-medium;
+  }
+
+  ul,
+  ol {
+    @apply list-inside;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+}

@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json`;
 
     try {
-        const response = await fetch(`${url}?input=${encodeURIComponent(input || '')}&key=${apiKey}&types=address&location=42.9849,-81.2453&radius=100000&language=en&components=country:ca`, {
+        const response = await fetch(`${url}?input=${encodeURIComponent(input || '')}&key=${apiKey}&types=address&location=42.9849,-81.2453&radius=100000&language=en`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
