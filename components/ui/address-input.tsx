@@ -14,14 +14,29 @@ interface AddressInputProps {
     placeholder?: string
     required?: boolean
     className?: string
+    value?: string
+    onChange?: (value: string) => void
+    onAddressSelect?: (address: string) => void
+    onBlur?: () => void
+    disabled?: boolean
 }
 
-export function AddressInput({ id, name, placeholder = "Enter an address", ...props }: AddressInputProps) {
+export function AddressInput({
+    id,
+    name,
+    placeholder = "Enter an address",
+    value: controlledValue,
+    onChange,
+    onAddressSelect,
+    ...props
+}: AddressInputProps) {
     const [input, setInput] = useState("")
     const [selectedAddress, setSelectedAddress] = useState("")
     const [isOpen, setIsOpen] = useState(false)
 
     const debouncedInput = useDebounce(input, 500)
+
+    const displayValue = controlledValue || selectedAddress || input
 
     const { data, isLoading } = useSWR(
         debouncedInput ? `/api/address/autocomplete?input=${debouncedInput}` : null,
@@ -38,11 +53,12 @@ export function AddressInput({ id, name, placeholder = "Enter an address", ...pr
                 {...props}
                 id={id}
                 name={name}
-                value={selectedAddress || input}
+                value={displayValue}
                 onChange={(e) => {
                     setInput(e.target.value)
                     setSelectedAddress("")
                     setIsOpen(true)
+                    onChange?.(e.target.value)
                 }}
                 onFocus={() => setIsOpen(true)}
                 placeholder={placeholder}
@@ -67,6 +83,9 @@ export function AddressInput({ id, name, placeholder = "Enter an address", ...pr
                                                 onSelect={(value) => {
                                                     setSelectedAddress(value)
                                                     setIsOpen(false)
+                                                    setInput(value)
+                                                    onChange?.(value)
+                                                    onAddressSelect?.(value)
                                                 }}
                                                 className="cursor-pointer"
                                             >
